@@ -37,6 +37,10 @@ Mixu说的最经典的一句话：
 
 ## 单线程，会死？
 
+> 不是Node.js太弱，而是你不会用
+
+先不要生气，听听看，为什么我会这样说？
+
 ### Node.js为什么是单线程呢？
 
 别只看缺点，先知道缺点是为什么来的？Node.js为什么是单线程呢？
@@ -65,9 +69,342 @@ Apache是多线程的：它的一个请求产生一个线程（或者进程，�
 
 单线程非常脆弱，随便弄点什么异常都会挂掉。
 
+举个最简单的例子
+
+```
+$ npm init -y
+$ npm install --save koa@next
+$ touch app.js
+```
+
+创建Node.js项目标准流程
+
+- 1）npm初始化，不论项目大小，它自己必须是一个模块，必须要有package.json
+- 2）使用npm安装koa模块，安装之后才可以使用
+- 3）创建入口文件app.js
+
+app.js
+
+```
+const fs  = require('fs');
+const Koa = require('koa');
+const app = new Koa();
+
+// response
+app.use(ctx => {
+  fs.readFile('somefile.txt', function (err, data) {
+    if (err) throw err;
+    console.log(data);
+
+    ctx.body = 'Hello Koa';
+  });
+});
+
+app.listen(3000);
+```
+
+执行，然后访问http://127.0.0.1:3000/，页面显示`Not Found`
+
+```
+$ node app.js
+/Users/sang/workspace/github/modern-nodejs/app.js:8
+    if (err) throw err;
+             ^
+
+Error: ENOENT: no such file or directory, open 'somefile.txt'
+    at Error (native)
+
+```
+
+如果只有1个接口，挂了就挂了，可绝大部分情况是一台服务器上至少有有几个，几十个，甚至更多接口，不能因为你一个接口异常就导致所有的都挂掉啊？
+
+> 你心里一定在骂：太浪费了。。。
+
+### 捕获uncaughtException
+
+改进版本app2.js
+
+```
+const fs  = require('fs');
+const Koa = require('koa');
+const app = new Koa();
+
+// response
+app.use(ctx => {
+  if (ctx.path == '/good'){
+    return ctx.body = 'good'
+  }
+  fs.readFile('somefile.txt', function (err, data) {
+    if (err) throw err;
+    console.log(data);
+
+    ctx.body = 'Hello Koa';
+  });
+});
+
+process.on('uncaughtException', function (err) {
+  console.log(err);
+})
+
+app.listen(3000);
+```
+
+使用`process.on('uncaughtException', function (err) {})`来处理，这样就不会crash了。可是很多应用都没有做这样的基本处理，不死才怪呢？
+
+### 捕获异常
+
+app3.js
+
+```
+const fs  = require('fs');
+const Koa = require('koa');
+const app = new Koa();
+
+// response
+app.use(ctx => {
+  if (ctx.path == '/good'){
+    return ctx.body = 'good'
+  }
+  
+  fs.readFile('somefile.txt', function (err, data) {
+    try {
+      if (err) throw err;
+      console.log(data);
+
+      ctx.body = 'Hello Koa';
+      
+    } catch (e) {
+      // 这里捕获不到 readCallback 函数中抛出的异常
+      console.log(e)
+    } finally {
+      console.log('离开 try/catch');
+    }
+  });
+
+});
+
+app.listen(3000);
+```
+
+- 1）Node.js里有约定，同步代码才能捕获异常，异步代码不能使用
+- 2）代码里都是try/catch太恶心了。。。
+- 3）使用try/catch成本较高，除非必要，一般不用
+
+所以这种可能性也必将小的
+
+### forever
+
+当遇到crash的时候，再重启就好了么？Node.js很早就有了专门做这个模块
+
+先全局安装这个模块，然后在terminal里就有forever命令
+
+```
+$ [sudo] npm install forever -g
+```
+
+然后以app.js为例
+
+```
+$ forever start app.js
+```
+
+此时访问http://127.0.0.1:3000/，页面显示`Not Found`，崩溃，然后forever处理crash事件，然后再起一个Node线程，于是又可以处理了。。。
+
+> forever就是打不死的小强
+
+### 小集群：单台服务器上多个实例
+
+至此，上面讲的都是单个实例。现在的服务器大多是多核的，所以无法充分利用多核优势。比较好的办法就是使用cluster模块
+
+cluster模块（集群）是Node.js在0.10之后就有的模块，专门用于解决多核并发问题。
+
+大家知道，nginx或haproxy等集群都是1主多从，主机的端口通过负载均衡算法，将请求转发到slave机器上。多机器是这样的，在1台机器上起多个实例，对这些实例进行集群也是一样的原理。
+
+这里推荐使用`pm2`模块，绝大部分的产品环境部署都使用pm2的，以前有用forever的，但大部分都转到pm2了。
+
+先全局安装这个模块，然后在terminal里就有pm2命令
+
+```
+$ [sudo] npm install pm2 -g
+$ pm2 start app.js -i 0 --name "modern-nodejs"
+```
+
+![Pm2](pm2.png)
+
+是不是非常简单？
+
+当访问http://127.0.0.1:3000/，页面显示`Not Found`，崩溃，此时看一下pm2的状态
+
+![Pm3](pm3.png)
+
+可以看到第一个线程，restart显示为1，也就是说它也也有forever一样的功能，当崩溃的时候它会自动创建新的线程来继续服务。
+
+> pm2非常强大，如无缝重载，各种监控，日志，部署等，自己摸索吧
+
+### 大集群：多台机器
+
+这就和其他语言一样了，常见的nginx或haproxy类的即可。
+
+这里就不熬述
+
+### 总结
+
+- 单个应用实例，可以适当的处理，减少崩溃几率
+- 单个应用实例crash之后，采用forever自动重启，继续服务
+- 利用多核cluster，同时在一台服务器上启动多个实例（同时崩溃的几率有多大呢？非常小吧？但也不是可能）
+- 你的应用线上部署就只部署1台服务器么？这种几率其实也蛮小的，多台服务器也要做集群
+
+如果所有集群里的服务器都crash了呢？这是运维水平问题了，招个运维吧，和Node.js无关
+
 ## 异步（callbackhell）太恶心？
 
+> Node.js的设计初衷为了性能而异步，现在已经可以同步了，你知道么？
+
+### js流程控制的演进过程
+
+js流程控制的演进过程，分以下5部分
+
+1. 同步代码
+1. 异步JavaScript: callbackhell
+1. Promise/a+
+1. 生成器Generators/yield
+1. Async函数/await（以前说是es7 stage-3）
+
+![Fc](fc.png)
+
+看起来挺简单的，各位自测一下，当前是哪个阶段？
+
+### Promise
+
+从promise开始，Node.js已内置Promise对象，另外bluebird、q这样的模块支持的也非常好，性能甚至比原生的还好。
+
+> 为了让大家从回调的地狱中回到天堂，Promise你值得拥有
+
+Promise是一种令代码异步行为更加优雅的抽象，有了它，我们就可以像写同步代码一样去写异步代码。它是从Common JS规范分裂出来的，目前主流是[Promose/A+](https://promisesaplus.com)规范。
+
+jQuery很早就引入了Promise的概念，主要是deffered和promise对象。而在Angularjs里也有类似的实现，叫$q，其实是promise库q的精简版。
+
+直接看代码
+
+```
+var step2 = function(data){
+  console.log(data)
+  
+  return new Promise(function(resolve, reject){
+    reject(new Error('reject with custom err'))
+  });
+}
+
+hello('./package.json').then(step1).then(step2).catch(function(err) {
+  console.log(err)
+})
+```
+
+在koa里可以这样用
+
+```
+exports.list = (ctx, next) => {
+  console.log(ctx.method + ' /users => list, query: ' + JSON.stringify(ctx.query));
+
+  return User.getAllAsync().then(( users)=>{
+    return ctx.render('users/index', {
+      users : users
+    })
+  }).catch((err)=>{
+      return ctx.api_error(err);
+  });
+};
+```
+
+把callbackhell该成thenable的写法，是不是看起来清爽一些了呢？
+
+### generator和yield
+
+其实还有更好的，在Node 0.12开始就支持generator和yield了
+
+es6里`function * () {}`为generator，在generator里使用yield转让处理权，generator原意是为了计算用的迭代器，但结合co这样的generator执行器，可以更好的进行“同步”流程控制。
+
+```
+exports.list = function *(ctx, next) {
+  console.log(ctx.method + ' /students => list, query: ' + JSON.stringify(ctx.query));
+  
+  let students = yield Student.getAllAsync();
+  
+  yield ctx.render('students/index', {
+    students : students
+  })
+};
+```
+
+看一下yield后接的异步操作（发送http请求），可以获取结果，这不就是和同步一样了么？
+
+### Async函数
+
+可是generator还是比较麻烦，需要执行器，generator执行的时候，需要先生成对象，然后next进行下一步。这样做起来还是比较麻烦，能不能不需要执行器啊？于是async函数就应运而生了。
+
+async函数es7 stage-3的特性，可惜差一点就进入到es7规范了。async函数里使用await可以做到和yield类似的效果，但await只能接promise对象。
+
+> async 可以声明一个异步函数，此函数需要返回一个 Promise 对象。await 可以等待一个 Promise 对象 resolve，并拿到结果。
+
+以下便是个例子
+
+```
+async function a1() {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, 1000);
+  })
+}
+
+async function a2() {
+  await a1();
+  console.log("2333");
+}
+a2()
+```
+
+使用babel或runkoa执行，就可以了，是不是更简单？await可以和yield一样，让异步逻辑像同步一样处理？
+
+```
+exports.list = async (ctx, next) => {
+  console.log(ctx.method + ' /students => list, query: ' + JSON.stringify(ctx.query));
+  try {
+    let students = await Student.getAllAsync();
+  
+    await ctx.render('students/index', {
+      students : students
+    })
+  } catch (err) {
+    return ctx.api_error(err);
+  }
+};
+```
+
+这里`Student.getAllAsync();`是数据库操作，是异步处理，是Promise封装的，通过await就变成了同步的，可以直接获得students，是不是非常简单？
+
+### 总结
+
+- async函数是趋势，如果[Chrome 52. v8 5.1已经支持async函数](https://github.com/nodejs/CTC/issues/7)了，Node.js支持还会远么？
+- async和generator函数里都支持promise，所以promise是必须会的
+- generator和yield异常强大，不过不会成为主流，所以学会基本用法和promise就好了，没必要所有的都必须会。
+- co作为generator执行器是不错的，它更好的是当做Promise 包装器，通过generator支持yieldable，最后返回Promise，是不是有点无耻？
+
+结论：Promise是必须会的，那你为啥不顺势而为呢？
+
 ## mongodb事务？
+
+mongodb是NoSQL里最像RDBMS的，又有非常好的性能，所以是目前最流行的，MEAN技术栈选用mongodb也是这个原因。
+
+当mongodb的问题是事务，mongodb数据库中操作单个文档总是原子性的，然而，涉及多个文档的操作，通常被作为一个“事务”，而不是原子性的。因为文档可以是相当复杂并且包含多个嵌套文档，单文档的原子性对许多实际用例提供了支持。尽管单文档操作是原子性的，在某些情况下，需要多文档事务。
+
+- 利用Document上的冗余，做宽表
+- 使用两阶段事务提交也可以
+
+但无论如何它还是没有rdbms的事务处理强的，所以还是要根据需求来处理
+
+- 严格事务的，比如交易，账单等，可以采用mysql等rdbms
+- 非严格事务的，使用mongodb
+
+把每个服务都写的非常小，1个服务对应一个数据库，这样一个node应用对应一个数据库就无所谓你选mysql还是mongodb了。如果不是类似微服务这样的架构，那么只选1种数据库是非常痛苦的，当分库分表的时候更痛苦的。
 
 ## 接入层？
 
