@@ -19,7 +19,7 @@ i5ting（江湖人称狼叔），空弦科技 CTO，StuQ 明星讲师，开源�
 
 曾就职在新浪、网秦，曾做过前端、后端、数据分析、移动端负责人、做过首席架构师、技术总监，全栈技术实践者，目前主要关注技术架构和团队梯队建设方向。
 
-![I5ting](i5ting.jpg)
+![I5ting](images/i5ting.jpg)
 
 Mixu说的最经典的一句话：
 
@@ -47,7 +47,7 @@ Mixu说的最经典的一句话：
 
 node.js中的第一个基本论点是I/O是昂贵的：
 
-![Io Cost](io-cost.png)
+![Io Cost](images/io-cost.png)
 
 当前编程技术中最大的浪费是等待I/O的完成。这里有几种用来处理这个性能影响的方法（来自Sam Rushing）：
 
@@ -61,7 +61,7 @@ Apache是多线程的：它的一个请求产生一个线程（或者进程，�
 
 至此理解Node.js的2大核心：（单线程的）异步事件和（单线程的）非阻塞io
 
-![CPU2](CPU2.png)
+![CPU2](images/CPU2.png)
 
 其实最大的改变是，强制开发写代码的时候要以异步模式来思考
 
@@ -229,13 +229,13 @@ $ [sudo] npm install pm2 -g
 $ pm2 start app.js -i 0 --name "modern-nodejs"
 ```
 
-![Pm2](pm2.png)
+![Pm2](images/pm2.png)
 
 是不是非常简单？
 
 当访问http://127.0.0.1:3000/，页面显示`Not Found`，崩溃，此时看一下pm2的状态
 
-![Pm3](pm3.png)
+![Pm3](images/pm3.png)
 
 可以看到第一个线程，restart显示为1，也就是说它也也有forever一样的功能，当崩溃的时候它会自动创建新的线程来继续服务。
 
@@ -270,7 +270,7 @@ js流程控制的演进过程，分以下5部分
 1. 生成器Generators/yield
 1. Async函数/await（以前说是es7 stage-3）
 
-![Fc](fc.png)
+![Fc](images/fc.png)
 
 看起来挺简单的，各位自测一下，当前是哪个阶段？
 
@@ -639,7 +639,7 @@ api_order:
 
 ## 微服务选型
 
-![Microservice](microservice.png)
+![Microservice](images/microservice.png)
 
 ### HTTP API
 
@@ -706,4 +706,4 @@ https://getkong.org/
 
 # 联系我
 
-![Sang](sang.jpg)
+![Sang](images/sang.jpg)
