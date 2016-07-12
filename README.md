@@ -632,10 +632,9 @@ api_order:
   image: api_order
 ```
 
+自己构建服务镜像，类似redis、mongodb这样的，组合镜像，可以快速构建开发环境。
 
- 
-- 自己构建服务镜像，类似redis、mongodb这样的
-- 
+使用docker compose和Node.js结合是非常方便的，外加其他docker技术，可以让开发流程更顺畅。
 
 ## 微服务选型
 
