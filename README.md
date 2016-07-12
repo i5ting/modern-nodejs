@@ -703,6 +703,8 @@ https://getkong.org/
 
 通过nginx + lua实现，提供插件机制，非常好用。
 
+![Kong](images/kong.png)
+
 ### 自动化运维
 
 - saltstack
