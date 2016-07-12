@@ -638,6 +638,12 @@ api_order:
 
 ## 微服务选型
 
+技术栈
+
+![Techstack](images/techstack.png)
+
+微服务选型
+
 ![Microservice](images/microservice.png)
 
 ### HTTP API
