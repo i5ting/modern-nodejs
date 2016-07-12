@@ -483,7 +483,7 @@ Node.js是单线程的，从上面的说明，我们可以知道Node.js对于io�
 
 肯定是可以的，但全是Node.js效率不会特别高，比较直播音频、视频、图片、编辑码，以及socket不是Node.js最强的点，像很多公司采用go去实现这部分是非常棒的。
 
-- 实时视频（推荐go）
+- 实时视频处理（推荐go）
 - 其他用Node.js做都非常合适，无论是聊天室，弹幕，还是各种rank，api等
 
 # 现代的Node.js：构建微服务利器
@@ -493,6 +493,169 @@ Node.js是单线程的，从上面的说明，我们可以知道Node.js对于io�
 - 善用npm，实现3化（模块化，最小化，服务化）
 - 使用docker compose作为本地开发环境
 - 微服务选型
+
+## 哲学：小而美
+
+使用Unix的方式：
+
+> Developers should build a program out of simple parts connected by well defined interfaces, so problems are local, and parts of the program can be replaced in future versions to support new features.
+
+保持模块足够小（内聚），模块应该只做一件事！
+
+
+The Node philosophy is to build small composible parts that do one thing (the UNIX philosophy), and if that one thing can be done in "userland", then it doesn't belong in core.
+
+
+"Small is beautiful"是Unix哲学9条里的第一条，但对Node.js来说，它实在是再合适不过了
+
+http://blog.izs.me/post/48281998870/unix-philosophy-and-nodejs
+
+<!-- ![](images/nodejs-philosophy.png) -->
+
+- Write modules that do one thing well. Write a new module rather than complicate an old one.
+- Write modules that encourage composition rather than extension.
+- Write modules that handle data Streams, because that is the universal interface.
+- Write modules that are agnostic about the source of their input or the destination of their output.
+- Write modules that solve a problem you know, so you can learn about the ones you don’t.
+- Write modules that are small. Iterate quickly. Refactor ruthlessly. Rewrite bravely.
+- Write modules quickly, to meet your needs, with just a few tests for compliance. Avoid extensive specifications. Add a test for each bug you fix.
+- Write modules for publication, even if you only use them privately. You will appreciate documentation in the future.
+
+
+以前吹牛那性能说事儿，现在那npm说事儿，也就是说npm目前是最好的包管理器，比其他语言都要好，它的模块数也非常多。
+
+可以这样说，Node.js世界里，一起都是模块，无论写点啥，都推荐你先`npm init`然后再写代码。
+
+这就有一个问题，模块的定义，是不是3行代码也可以是一个模块呢？
+
+知名Node.js程序员 [sindresorhus ](https://github.com/sindresorhus/ama/issues/10)说过
+
+> Sometimes code is complex because it has to be. It might handle more edge cases which are found over time and makes the code more durable.
+
+对于模块使用问题，我觉得还是要谨慎一点，能自己做的尽量自己做，如非必须，尽量少用。
+
+## 同步的Node.js
+
+上面讲了generator和async函数可以让Node.js代码写的跟同步一样，推荐async + promise用法。
+
+### 异常处理
+
+Node.js里关于异常处理有一个约定，即同步代码采用try/catch，非同步代码采用error-first方式。对于async函数俩说，它的await语句是同步执行的，所以最正常的流程处理是采用try/catch语句捕获。
+
+```
+try {
+  console.log(await asyncFn());
+} catch (err) {
+  console.error(err);
+}
+```
+
+这是通用性的做法，很多时候，我们需要把异常做的更细致一些，这时只要把Promise的异常处理好就好了。
+
+- then(onFulfilled, onRejected)里的onRejected
+- catch
+
+### 实践
+
+- promise更容易做promisefyAll
+- async函数无法批量操作
+
+那么，在常见的web应用里，dao层使用promise比较好，而service层，使用async/await更好
+
+dao层使用promise
+
+- crud
+- 单一模型的方法多
+- 库自身支持promise
+
+这种用promisefyAll基本几行代码就够了，一般单一模型的操作，不会特别复杂，应变的需求基本不大。
+
+而service层一般是多个model组合操作，多模型操作就可以拆分成多个小的操作，然后使用await来组合，看起来会更加清晰，另外对需求应变也是非常容易的。
+
+### 总结
+
+- async函数语义上非常好
+- async不需要执行器，它本身具备执行能力，不像generator
+- async函数的异常处理采用try/catch和promise的错误处理，非常强大
+- await接Promise，Promise自身就足够应对所有流程了
+- await释放Promise的组合能力，外加Promise的then，基本无敌
+
+这就是我们要追赶的趋势。如果无意外10月份之前就会发布新的Node.js版本，会支持async函数哦。即使现在，用babel编译，也还是可以的。
+
+## 善用npm，实现3化（模块化，最小化，服务化）
+
+
+## 使用docker compose作为本地开发环境
+
+
+## 微服务选型
+
+![Microservice](microservice.png)
+
+
+### API 标准写法
+
+
+可视化编辑校验： http://jsoneditoronline.org/
+
+
+当然restful 风格api也是非常好的。
+
+### 使用rpc拆分服务
+
+比较好的做法是http api调用rpc，提供最终api
+
+- 单一调用，简单接口
+- 多个调用，可以封装成上层服务，也可以组合用
+
+rpc框架，如dubbo，dubbo-x，motan，grpc等，我们选的是grpc
+
+node.js还有senecajs.org专门做微服务的，唯一的缺点是多语言支持，其他都非常好。
+
+### rpc拆分后，拆分db
+
+一般拆分rpc都会按照某些业务主体划分，所以数据库是可以拆分出去
+
+比如
+
+- 库存
+- 订单
+- 评论
+- 弹幕
+
+其实，只要保证用户一致，其他数据库保存各自的数据就好。在数据分析的时候，汇总到一起即可，无论etl还是stream都可以。
+
+服务和db拆分的好处是便于横向扩展，这样就可以做到动态伸缩，哪里有瓶颈治哪里，在架构调优上是有明显优势的。
+
+### 服务多，就要服务治理、发现
+
+采用consul作为服务发现软件(etcd也不错)
+
+### 服务器监控apm
+
+这是java写的
+
+https://github.com/naver/pinpoint
+
+### api多了，怎么办呢？
+
+都是重复的，如日志、权限等，这时，我们需要api Gateway。
+
+https://getkong.org/
+
+通过nginx + lua实现，提供插件机制，非常好用。
+
+### 自动化运维
+
+- saltstack
+
+### 容器化
+
+剩下的就是大家熟悉的docker了
+
+### 总结
+
+架构是相同的，其实语言是无所谓的。
 
 # 联系我
 
