@@ -592,14 +592,12 @@ dao层使用promise
 
 ![Microservice](microservice.png)
 
+### HTTP API
 
-### API 标准写法
+采用Koa.js 2.x作为http api层框架，主要封装和组装rpc服务。
 
-
-可视化编辑校验： http://jsoneditoronline.org/
-
-
-当然restful 风格api也是非常好的。
+- 目前使用generator和yield + promise来做异步流程控制
+- 等node原生支持async函数，全面切换到async + promise（预计10月份）
 
 ### 使用rpc拆分服务
 
