@@ -691,10 +691,6 @@ node.js还有senecajs.org专门做微服务的，唯一的缺点是多语言支�
 
 采用consul作为服务发现软件(etcd也不错)
 
-### 服务器监控apm
-
-这是java写的https://github.com/naver/pinpoint
-
 ### api多了，怎么办呢？
 
 都是重复的，如日志、权限等，这时，我们需要api Gateway。
@@ -705,17 +701,13 @@ https://getkong.org/
 
 ![Kong](images/kong.png)
 
-### 自动化运维
-
-- saltstack
-
 ### 容器化
 
 剩下的就是大家熟悉的docker了
 
 ### 总结
 
-架构是相同的，其实语言是无所谓的。使用Node.js可以最小成本的快速构建服务，无论从技术难度，还是未来趋势上都是比较好的技术选型。
+架构是相同的，其实语言是无所谓的。使用Node.js可以最小成本的快速构建服务，无论从技术难度，运维，还是未来趋势上都是比较好的技术选型。
 
 如果大家有兴趣，也可以看看我写的[《全栈工程师之路-Node.js》] (http://i5ting.github.io/nodejs-fullstack/)
 
