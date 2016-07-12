@@ -1,0 +1,889 @@
+
+	    <html>
+	      <head>
+				  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	        <title>README</title>
+					
+					<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+			
+				  <style>
+					pre {
+					    counter-reset: line-numbering;
+					    border: solid 1px #d9d9d9;
+					    border-radius: 0;
+					    background: #fff;
+					    padding: 0;
+					    line-height: 23px;
+					    margin-bottom: 30px;
+					    white-space: pre;
+					    overflow-x: auto;
+					    word-break: inherit;
+					    word-wrap: inherit;
+					}
+
+					pre a::before {
+					  content: counter(line-numbering);
+					  counter-increment: line-numbering;
+					  padding-right: 1em; /* space after numbers */
+					  width: 25px;
+					  text-align: right;
+					  opacity: 0.7;
+					  display: inline-block;
+					  color: #aaa;
+					  background: #eee;
+					  margin-right: 16px;
+					  padding: 2px 10px;
+					  font-size: 13px;
+					  -webkit-touch-callout: none;
+					  -webkit-user-select: none;
+					  -khtml-user-select: none;
+					  -moz-user-select: none;
+					  -ms-user-select: none;
+					  user-select: none;
+					}
+
+					pre a:first-of-type::before {
+					  padding-top: 10px;
+					}
+
+					pre a:last-of-type::before {
+					  padding-bottom: 10px;
+					}
+
+					pre a:only-of-type::before {
+					  padding: 10px;
+					}
+			
+					.highlight { background-color: #ffffcc } /* RIGHT */
+					</style>
+	      </head>
+	      <body>
+				  <div>
+							<div style='width:25%;'>
+									<ul id="tree" class="ztree" style='width:100%'>
+		
+									</ul>
+							</div>
+			        <div id='readme' style='width:70%;margin-left:20%;'>
+			          	<article class='markdown-body'>
+			            	<style>.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f0f0f0; }
+.highlight .c { color: #60a0b0; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #007020; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #007020 } /* Comment.Preproc */
+.highlight .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #007020 } /* Keyword.Pseudo */
+.highlight .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #902000 } /* Keyword.Type */
+.highlight .m { color: #40a070 } /* Literal.Number */
+.highlight .s { color: #4070a0 } /* Literal.String */
+.highlight .na { color: #4070a0 } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.highlight .no { color: #60add5 } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #007020 } /* Name.Exception */
+.highlight .nf { color: #06287e } /* Name.Function */
+.highlight .nl { color: #002070; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #bb60d5 } /* Name.Variable */
+.highlight .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #40a070 } /* Literal.Number.Bin */
+.highlight .mf { color: #40a070 } /* Literal.Number.Float */
+.highlight .mh { color: #40a070 } /* Literal.Number.Hex */
+.highlight .mi { color: #40a070 } /* Literal.Number.Integer */
+.highlight .mo { color: #40a070 } /* Literal.Number.Oct */
+.highlight .sb { color: #4070a0 } /* Literal.String.Backtick */
+.highlight .sc { color: #4070a0 } /* Literal.String.Char */
+.highlight .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #4070a0 } /* Literal.String.Double */
+.highlight .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.highlight .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { color: #c65d09 } /* Literal.String.Other */
+.highlight .sr { color: #235388 } /* Literal.String.Regex */
+.highlight .s1 { color: #4070a0 } /* Literal.String.Single */
+.highlight .ss { color: #517918 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #bb60d5 } /* Name.Variable.Class */
+.highlight .vg { color: #bb60d5 } /* Name.Variable.Global */
+.highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
+<h1>modern-nodejs</h1>
+
+<p>DockOne微信分享专用（2016-07-12）《微服务选型之Modern Node.js》</p>
+
+<h2>摘要</h2>
+
+<p>目前Node.js的发展非常快，大家可能还停留在：Node.js性能很好，Node.js里都是回调，写起来很恶心，Node.js只能做前端工具，Node.js是单线程部署会有问题，以及这样的八卦《uber用go替代Node.js重写了地理位置服务》...</p>
+
+<p>可是真相呢？</p>
+
+<p>在微服务盛行的今天，为什么我们要选用Node.js去构建微服务呢？本次分享将试图从以下2个方面给出答案：</p>
+
+<ul>
+<li>被误解的Node.js：除了性能，都是病？</li>
+<li>现代的Node.js：构建微服务利器</li>
+</ul>
+
+<h2>个人介绍</h2>
+
+<p>i5ting（江湖人称狼叔），空弦科技 CTO，StuQ 明星讲师，开源项目 Moajs 作者，Node.js 技术布道者，即将出版《更了不起的 Node 4：将下一代 Web 框架 Koa 进行到底》</p>
+
+<p>曾就职在新浪、网秦，曾做过前端、后端、数据分析、移动端负责人、做过首席架构师、技术总监，全栈技术实践者，目前主要关注技术架构和团队梯队建设方向。</p>
+
+<p><img src="images/i5ting.jpg" alt="I5ting"></p>
+
+<p>Mixu说的最经典的一句话：</p>
+
+<blockquote>
+<p>Everything runs in parallel except your code!（在Node中）除了代码，一切都是并行的！</p>
+</blockquote>
+
+<h1>被误解的Node.js：除了性能，都是病？</h1>
+
+<ul>
+<li>单线程，会死？</li>
+<li>异步（callbackhell）太恶心？</li>
+<li>mongodb事务？</li>
+<li>接入层？</li>
+<li>uber用go替代Node.js重写了地理位置服务？</li>
+</ul>
+
+<h2>单线程，会死？</h2>
+
+<blockquote>
+<p>不是Node.js太弱，而是你不会用</p>
+</blockquote>
+
+<p>先不要生气，听听看，为什么我会这样说？</p>
+
+<h3>Node.js为什么是单线程呢？</h3>
+
+<p>别只看缺点，先知道缺点是为什么来的？Node.js为什么是单线程呢？</p>
+
+<p>node.js中的第一个基本论点是I/O是昂贵的：</p>
+
+<p><img src="images/io-cost.png" alt="Io Cost"></p>
+
+<p>当前编程技术中最大的浪费是等待I/O的完成。这里有几种用来处理这个性能影响的方法（来自Sam Rushing）：</p>
+
+<ul>
+<li>同步：你同一时间只处理一个请求，每次一个。优点：简单；缺点：任何一个请求都可以挂起所有其他请求。</li>
+<li>fork新进程：你启动一个新进程来处理每个请求。优点：简单；缺点：无法很好的扩展，大量的连接意味着大量的进程。fork()是Unix程序员的锤子。因为它可用，所以每个问题看起来都像一个钉子。但是通常情况下都是大炮打蚊子。</li>
+<li>线程：启动新的线程来处理每个请求。优点：简单，比使用fork对内核更加友好，因为线程占用更少的系统开销；缺点：你的机器可能没有线程，而且面向线程的编程由于担心对共享资源的访问控制，可能会很快地变得非常复杂。</li>
+</ul>
+
+<p>第二个基本的论点是「每个连接一个线程」的模式是很耗内存的：[比如每个人都展示过的关于Apache与Nginx对比过的内存消耗图]</p>
+
+<p>Apache是多线程的：它的一个请求产生一个线程（或者进程，取决于配置文件）。随着并发连接数的增加以及为了服务更多的并发客户端而对更多线程的需求，你可以看见系统统开销是如何吃掉内存的。Nginx和Node.js不是多线程，因为多个线程和多个进程会需要大量的内存。它们都是单线程的，但是是事件驱动。通过在一个线程中处理多个连接，这消除了由上千个线程/进程所产生的系统消耗。</p>
+
+<p>至此理解Node.js的2大核心：（单线程的）异步事件和（单线程的）非阻塞io</p>
+
+<p><img src="images/CPU2.png" alt="CPU2"></p>
+
+<p>其实最大的改变是，强制开发写代码的时候要以异步模式来思考</p>
+
+<h3>会死？</h3>
+
+<p>单线程非常脆弱，随便弄点什么异常都会挂掉。</p>
+
+<p>举个最简单的例子</p>
+<div class="highlight"><pre><span class="nv">$ </span>npm init -y
+<span class="nv">$ </span>npm install --save koa@next
+<span class="nv">$ </span>touch app.js
+</pre></div>
+<p>创建Node.js项目标准流程</p>
+
+<ul>
+<li>1）npm初始化，不论项目大小，它自己必须是一个模块，必须要有package.json</li>
+<li>2）使用npm安装koa模块，安装之后才可以使用</li>
+<li>3）创建入口文件app.js</li>
+</ul>
+
+<p>app.js</p>
+<div class="highlight"><pre><span class="vg">const</span><span class="w"> </span><span class="vg">fs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;fs&#39;);</span>
+<span class="vg">const</span><span class="w"> </span><span class="vg">Koa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;koa&#39;);</span>
+<span class="vg">const</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">new</span><span class="w"> </span><span class="vg">Koa</span><span class="p">();</span>
+
+<span class="o">//</span><span class="w"> </span><span class="vg">response</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">ctx</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">fs</span><span class="o">.</span><span class="vg">readFile</span><span class="p">(</span><span class="c1">&#39;somefile.txt&#39;, function (err, data) {</span>
+<span class="w">    </span><span class="vg">if</span><span class="w"> </span><span class="p">(</span><span class="vg">err</span><span class="p">)</span><span class="w"> </span><span class="vg">throw</span><span class="w"> </span><span class="vg">err</span><span class="p">;</span>
+<span class="w">    </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">data</span><span class="p">);</span>
+
+<span class="w">    </span><span class="vg">ctx</span><span class="o">.</span><span class="vg">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;Hello Koa&#39;;</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">3000</span><span class="p">);</span>
+</pre></div>
+<p>执行，然后访问http://127.0.0.1:3000/，页面显示<code>Not Found</code></p>
+<div class="highlight"><pre><span class="nv">$ </span>node app.js
+/Users/sang/workspace/github/modern-nodejs/app.js:8
+    <span class="k">if</span> <span class="o">(</span>err<span class="o">)</span> throw err<span class="p">;</span>
+             ^
+
+Error: ENOENT: no such file or directory, open <span class="s1">&#39;somefile.txt&#39;</span>
+    at Error <span class="o">(</span>native<span class="o">)</span>
+</pre></div>
+<p>如果只有1个接口，挂了就挂了，可绝大部分情况是一台服务器上至少有有几个，几十个，甚至更多接口，不能因为你一个接口异常就导致所有的都挂掉啊？</p>
+
+<blockquote>
+<p>你心里一定在骂：太浪费了。。。</p>
+</blockquote>
+
+<h3>捕获uncaughtException</h3>
+
+<p>改进版本app2.js</p>
+<div class="highlight"><pre><span class="vg">const</span><span class="w"> </span><span class="vg">fs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;fs&#39;);</span>
+<span class="vg">const</span><span class="w"> </span><span class="vg">Koa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;koa&#39;);</span>
+<span class="vg">const</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">new</span><span class="w"> </span><span class="vg">Koa</span><span class="p">();</span>
+
+<span class="o">//</span><span class="w"> </span><span class="vg">response</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">ctx</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">if</span><span class="w"> </span><span class="p">(</span><span class="vg">ctx</span><span class="o">.</span><span class="vg">path</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="c1">&#39;/good&#39;){</span>
+<span class="w">    </span><span class="vg">return</span><span class="w"> </span><span class="vg">ctx</span><span class="o">.</span><span class="vg">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;good&#39;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="vg">fs</span><span class="o">.</span><span class="vg">readFile</span><span class="p">(</span><span class="c1">&#39;somefile.txt&#39;, function (err, data) {</span>
+<span class="w">    </span><span class="vg">if</span><span class="w"> </span><span class="p">(</span><span class="vg">err</span><span class="p">)</span><span class="w"> </span><span class="vg">throw</span><span class="w"> </span><span class="vg">err</span><span class="p">;</span>
+<span class="w">    </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">data</span><span class="p">);</span>
+
+<span class="w">    </span><span class="vg">ctx</span><span class="o">.</span><span class="vg">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;Hello Koa&#39;;</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+
+<span class="vg">process</span><span class="o">.</span><span class="vg">on</span><span class="p">(</span><span class="c1">&#39;uncaughtException&#39;, function (err) {</span>
+<span class="w">  </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">err</span><span class="p">);</span>
+<span class="p">})</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">3000</span><span class="p">);</span>
+</pre></div>
+<p>使用<code>process.on(&#39;uncaughtException&#39;, function (err) {})</code>来处理，这样就不会crash了。可是很多应用都没有做这样的基本处理，不死才怪呢？</p>
+
+<h3>捕获异常</h3>
+
+<p>app3.js</p>
+<div class="highlight"><pre><span class="vg">const</span><span class="w"> </span><span class="vg">fs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;fs&#39;);</span>
+<span class="vg">const</span><span class="w"> </span><span class="vg">Koa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;koa&#39;);</span>
+<span class="vg">const</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">new</span><span class="w"> </span><span class="vg">Koa</span><span class="p">();</span>
+
+<span class="o">//</span><span class="w"> </span><span class="vg">response</span>
+<span class="vg">app</span><span class="o">.</span><span class="vg">use</span><span class="p">(</span><span class="vg">ctx</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">if</span><span class="w"> </span><span class="p">(</span><span class="vg">ctx</span><span class="o">.</span><span class="vg">path</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="c1">&#39;/good&#39;){</span>
+<span class="w">    </span><span class="vg">return</span><span class="w"> </span><span class="vg">ctx</span><span class="o">.</span><span class="vg">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;good&#39;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="vg">fs</span><span class="o">.</span><span class="vg">readFile</span><span class="p">(</span><span class="c1">&#39;somefile.txt&#39;, function (err, data) {</span>
+<span class="w">    </span><span class="vg">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="vg">if</span><span class="w"> </span><span class="p">(</span><span class="vg">err</span><span class="p">)</span><span class="w"> </span><span class="vg">throw</span><span class="w"> </span><span class="vg">err</span><span class="p">;</span>
+<span class="w">      </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">data</span><span class="p">);</span>
+
+<span class="w">      </span><span class="vg">ctx</span><span class="o">.</span><span class="vg">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;Hello Koa&#39;;</span>
+
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="vg">catch</span><span class="w"> </span><span class="p">(</span><span class="vg">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="o">//</span><span class="w"> </span><span class="err">这里捕获不到</span><span class="w"> </span><span class="vg">readCallback</span><span class="w"> </span><span class="err">函数中抛出的异常</span>
+<span class="w">      </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">e</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="vg">finally</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="c1">&#39;离开 try/catch&#39;);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="p">});</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">3000</span><span class="p">);</span>
+</pre></div>
+<ul>
+<li>1）Node.js里有约定，同步代码才能捕获异常，异步代码不能使用</li>
+<li>2）代码里都是try/catch太恶心了。。。</li>
+<li>3）使用try/catch成本较高，除非必要，一般不用</li>
+</ul>
+
+<p>所以这种可能性也必将小的</p>
+
+<h3>forever</h3>
+
+<p>当遇到crash的时候，再重启就好了么？Node.js很早就有了专门做这个模块</p>
+
+<p>先全局安装这个模块，然后在terminal里就有forever命令</p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="o">[</span>sudo<span class="o">]</span> npm install forever -g
+</pre></div>
+<p>然后以app.js为例</p>
+<div class="highlight"><pre><span class="nv">$ </span>forever start app.js
+</pre></div>
+<p>此时访问http://127.0.0.1:3000/，页面显示<code>Not Found</code>，崩溃，然后forever处理crash事件，然后再起一个Node线程，于是又可以处理了。。。</p>
+
+<blockquote>
+<p>forever就是打不死的小强</p>
+</blockquote>
+
+<h3>小集群：单台服务器上多个实例</h3>
+
+<p>至此，上面讲的都是单个实例。现在的服务器大多是多核的，所以无法充分利用多核优势。比较好的办法就是使用cluster模块</p>
+
+<p>cluster模块（集群）是Node.js在0.10之后就有的模块，专门用于解决多核并发问题。</p>
+
+<p>大家知道，nginx或haproxy等集群都是1主多从，主机的端口通过负载均衡算法，将请求转发到slave机器上。多机器是这样的，在1台机器上起多个实例，对这些实例进行集群也是一样的原理。</p>
+
+<p>这里推荐使用<code>pm2</code>模块，绝大部分的产品环境部署都使用pm2的，以前有用forever的，但大部分都转到pm2了。</p>
+
+<p>先全局安装这个模块，然后在terminal里就有pm2命令</p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="o">[</span>sudo<span class="o">]</span> npm install pm2 -g
+<span class="nv">$ </span>pm2 start app.js -i <span class="m">0</span> --name <span class="s2">&quot;modern-nodejs&quot;</span>
+</pre></div>
+<p><img src="images/pm2.png" alt="Pm2"></p>
+
+<p>是不是非常简单？</p>
+
+<p>当访问http://127.0.0.1:3000/，页面显示<code>Not Found</code>，崩溃，此时看一下pm2的状态</p>
+
+<p><img src="images/pm3.png" alt="Pm3"></p>
+
+<p>可以看到第一个线程，restart显示为1，也就是说它也也有forever一样的功能，当崩溃的时候它会自动创建新的线程来继续服务。</p>
+
+<blockquote>
+<p>pm2非常强大，如无缝重载，各种监控，日志，部署等，自己摸索吧</p>
+</blockquote>
+
+<h3>大集群：多台机器</h3>
+
+<p>这就和其他语言一样了，常见的nginx或haproxy类的即可。</p>
+
+<p>这里就不熬述</p>
+
+<h3>总结</h3>
+
+<ul>
+<li>单个应用实例，可以适当的处理，减少崩溃几率</li>
+<li>单个应用实例crash之后，采用forever自动重启，继续服务</li>
+<li>利用多核cluster，同时在一台服务器上启动多个实例（同时崩溃的几率有多大呢？非常小吧？但也不是可能）</li>
+<li>你的应用线上部署就只部署1台服务器么？这种几率其实也蛮小的，多台服务器也要做集群</li>
+</ul>
+
+<p>如果所有集群里的服务器都crash了呢？这是运维水平问题了，招个运维吧，和Node.js无关</p>
+
+<h2>异步（callbackhell）太恶心？</h2>
+
+<blockquote>
+<p>Node.js的设计初衷为了性能而异步，现在已经可以同步了，你知道么？</p>
+</blockquote>
+
+<h3>js流程控制的演进过程</h3>
+
+<p>js流程控制的演进过程，分以下5部分</p>
+
+<ol>
+<li>同步代码</li>
+<li>异步JavaScript: callbackhell</li>
+<li>Promise/a+</li>
+<li>生成器Generators/yield</li>
+<li>Async函数/await（以前说是es7 stage-3）</li>
+</ol>
+
+<p><img src="images/fc.png" alt="Fc"></p>
+
+<p>看起来挺简单的，各位自测一下，当前是哪个阶段？</p>
+
+<h3>Promise</h3>
+
+<p>从promise开始，Node.js已内置Promise对象，另外bluebird、q这样的模块支持的也非常好，性能甚至比原生的还好。</p>
+
+<blockquote>
+<p>为了让大家从回调的地狱中回到天堂，Promise你值得拥有</p>
+</blockquote>
+
+<p>Promise是一种令代码异步行为更加优雅的抽象，有了它，我们就可以像写同步代码一样去写异步代码。它是从Common JS规范分裂出来的，目前主流是<a href="https://promisesaplus.com">Promose/A+</a>规范。</p>
+
+<p>jQuery很早就引入了Promise的概念，主要是deffered和promise对象。而在Angularjs里也有类似的实现，叫$q，其实是promise库q的精简版。</p>
+
+<p>直接看代码</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">step2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">function</span><span class="p">(</span><span class="vg">data</span><span class="p">){</span>
+<span class="w">  </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">data</span><span class="p">)</span>
+
+<span class="w">  </span><span class="vg">return</span><span class="w"> </span><span class="vg">new</span><span class="w"> </span><span class="vg">Promise</span><span class="p">(</span><span class="vg">function</span><span class="p">(</span><span class="vg">resolve</span><span class="p">,</span><span class="w"> </span><span class="vg">reject</span><span class="p">){</span>
+<span class="w">    </span><span class="vg">reject</span><span class="p">(</span><span class="vg">new</span><span class="w"> </span><span class="vg">Error</span><span class="p">(</span><span class="c1">&#39;reject with custom err&#39;))</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="vg">hello</span><span class="p">(</span><span class="c1">&#39;./package.json&#39;).then(step1).then(step2).catch(function(err) {</span>
+<span class="w">  </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">err</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+<p>在koa里可以这样用</p>
+<div class="highlight"><pre><span class="vg">exports</span><span class="o">.</span><span class="vg">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="vg">ctx</span><span class="p">,</span><span class="w"> </span><span class="vg">next</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">ctx</span><span class="o">.</span><span class="vg">method</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1">&#39; /users =&gt; list, query: &#39; + JSON.stringify(ctx.query));</span>
+
+<span class="w">  </span><span class="vg">return</span><span class="w"> </span><span class="vg">User</span><span class="o">.</span><span class="vg">getAllAsync</span><span class="p">()</span><span class="o">.</span><span class="vg">then</span><span class="p">((</span><span class="w"> </span><span class="vg">users</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+<span class="w">    </span><span class="vg">return</span><span class="w"> </span><span class="vg">ctx</span><span class="o">.</span><span class="vg">render</span><span class="p">(</span><span class="c1">&#39;users/index&#39;, {</span>
+<span class="w">      </span><span class="vg">users</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="vg">users</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span><span class="o">.</span><span class="vg">catch</span><span class="p">((</span><span class="vg">err</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+<span class="w">      </span><span class="vg">return</span><span class="w"> </span><span class="vg">ctx</span><span class="o">.</span><span class="vg">api_error</span><span class="p">(</span><span class="vg">err</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+</pre></div>
+<p>把callbackhell该成thenable的写法，是不是看起来清爽一些了呢？</p>
+
+<h3>generator和yield</h3>
+
+<p>其实还有更好的，在Node 0.12开始就支持generator和yield了</p>
+
+<p>es6里<code>function * () {}</code>为generator，在generator里使用yield转让处理权，generator原意是为了计算用的迭代器，但结合co这样的generator执行器，可以更好的进行“同步”流程控制。</p>
+<div class="highlight"><pre><span class="vg">exports</span><span class="o">.</span><span class="vg">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">function</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="vg">ctx</span><span class="p">,</span><span class="w"> </span><span class="vg">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">ctx</span><span class="o">.</span><span class="vg">method</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1">&#39; /students =&gt; list, query: &#39; + JSON.stringify(ctx.query));</span>
+
+<span class="w">  </span><span class="vg">let</span><span class="w"> </span><span class="vg">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">yield</span><span class="w"> </span><span class="vg">Student</span><span class="o">.</span><span class="vg">getAllAsync</span><span class="p">();</span>
+
+<span class="w">  </span><span class="vg">yield</span><span class="w"> </span><span class="vg">ctx</span><span class="o">.</span><span class="vg">render</span><span class="p">(</span><span class="c1">&#39;students/index&#39;, {</span>
+<span class="w">    </span><span class="vg">students</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="vg">students</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">};</span>
+</pre></div>
+<p>看一下yield后接的异步操作（发送http请求），可以获取结果，这不就是和同步一样了么？</p>
+
+<h3>Async函数</h3>
+
+<p>可是generator还是比较麻烦，需要执行器，generator执行的时候，需要先生成对象，然后next进行下一步。这样做起来还是比较麻烦，能不能不需要执行器啊？于是async函数就应运而生了。</p>
+
+<p>async函数es7 stage-3的特性，可惜差一点就进入到es7规范了。async函数里使用await可以做到和yield类似的效果，但await只能接promise对象。</p>
+
+<blockquote>
+<p>async 可以声明一个异步函数，此函数需要返回一个 Promise 对象。await 可以等待一个 Promise 对象 resolve，并拿到结果。</p>
+</blockquote>
+
+<p>以下便是个例子</p>
+<div class="highlight"><pre><span class="vg">async</span><span class="w"> </span><span class="vg">function</span><span class="w"> </span><span class="vg">a1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">return</span><span class="w"> </span><span class="vg">new</span><span class="w"> </span><span class="vg">Promise</span><span class="p">((</span><span class="vg">resolve</span><span class="p">,</span><span class="w"> </span><span class="vg">reject</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="vg">setTimeout</span><span class="p">(</span><span class="vg">resolve</span><span class="p">,</span><span class="w"> </span><span class="il">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">}</span>
+
+<span class="vg">async</span><span class="w"> </span><span class="vg">function</span><span class="w"> </span><span class="vg">a2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">await</span><span class="w"> </span><span class="vg">a1</span><span class="p">();</span>
+<span class="w">  </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="s2">&quot;2333&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="vg">a2</span><span class="p">()</span>
+</pre></div>
+<p>使用babel或runkoa执行，就可以了，是不是更简单？await可以和yield一样，让异步逻辑像同步一样处理？</p>
+<div class="highlight"><pre><span class="vg">exports</span><span class="o">.</span><span class="vg">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">async</span><span class="w"> </span><span class="p">(</span><span class="vg">ctx</span><span class="p">,</span><span class="w"> </span><span class="vg">next</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">ctx</span><span class="o">.</span><span class="vg">method</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1">&#39; /students =&gt; list, query: &#39; + JSON.stringify(ctx.query));</span>
+<span class="w">  </span><span class="vg">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="vg">let</span><span class="w"> </span><span class="vg">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">await</span><span class="w"> </span><span class="vg">Student</span><span class="o">.</span><span class="vg">getAllAsync</span><span class="p">();</span>
+
+<span class="w">    </span><span class="vg">await</span><span class="w"> </span><span class="vg">ctx</span><span class="o">.</span><span class="vg">render</span><span class="p">(</span><span class="c1">&#39;students/index&#39;, {</span>
+<span class="w">      </span><span class="vg">students</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="vg">students</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="vg">catch</span><span class="w"> </span><span class="p">(</span><span class="vg">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="vg">return</span><span class="w"> </span><span class="vg">ctx</span><span class="o">.</span><span class="vg">api_error</span><span class="p">(</span><span class="vg">err</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+<p>这里<code>Student.getAllAsync();</code>是数据库操作，是异步处理，是Promise封装的，通过await就变成了同步的，可以直接获得students，是不是非常简单？</p>
+
+<h3>总结</h3>
+
+<ul>
+<li>async函数是趋势，如果<a href="https://github.com/nodejs/CTC/issues/7">Chrome 52. v8 5.1已经支持async函数</a>了，Node.js支持还会远么？</li>
+<li>async和generator函数里都支持promise，所以promise是必须会的</li>
+<li>generator和yield异常强大，不过不会成为主流，所以学会基本用法和promise就好了，没必要所有的都必须会。</li>
+<li>co作为generator执行器是不错的，它更好的是当做Promise 包装器，通过generator支持yieldable，最后返回Promise，是不是有点无耻？</li>
+</ul>
+
+<p>结论：Promise是必须会的，那你为啥不顺势而为呢？</p>
+
+<h2>mongodb事务？</h2>
+
+<p>mongodb是NoSQL里最像RDBMS的，又有非常好的性能，所以是目前最流行的，MEAN技术栈选用mongodb也是这个原因。</p>
+
+<p>当mongodb的问题是事务，mongodb数据库中操作单个文档总是原子性的，然而，涉及多个文档的操作，通常被作为一个“事务”，而不是原子性的。因为文档可以是相当复杂并且包含多个嵌套文档，单文档的原子性对许多实际用例提供了支持。尽管单文档操作是原子性的，在某些情况下，需要多文档事务。</p>
+
+<ul>
+<li>利用Document上的冗余，做宽表</li>
+<li>使用两阶段事务提交也可以</li>
+</ul>
+
+<p>但无论如何它还是没有rdbms的事务处理强的，所以还是要根据需求来处理</p>
+
+<ul>
+<li>严格事务的，比如交易，账单等，可以采用mysql等rdbms</li>
+<li>非严格事务的，使用mongodb</li>
+</ul>
+
+<p>把每个服务都写的非常小，1个服务对应一个数据库，这样一个node应用对应一个数据库就无所谓你选mysql还是mongodb了。如果不是类似微服务这样的架构，那么只选1种数据库是非常痛苦的，当分库分表的时候更痛苦的。</p>
+
+<h2>用Node.js做接入层？</h2>
+
+<p>很多公司用Node.js做接入层，比如阿里系的天猫和淘宝，后端大量的c/c++和java，前端用Node.js一点点替换php，据说如果都替换完成，可以每年服务器上节省电费700百万（不知真假）</p>
+
+<p>所谓的接入层就api层以前的（前端 + httpserver-by-node），然后node去调用api服务，返回给前端。node的作用就是控制器，从api取数据，然后返回给渲染层。</p>
+
+<p>这是一种切入办法，其实node远不止做接入层</p>
+
+<ul>
+<li>前端构建工具（cordova，electron，gulp，npm等）</li>
+<li>接入层（最容易）</li>
+<li>api(可接mysql，可接mongdob，可以满足绝大部分需求)</li>
+<li>im，成本最低的实现方式</li>
+<li>其他i/o密集的应用</li>
+</ul>
+
+<h2>uber用go替代Node.js重写了地理位置服务？</h2>
+
+<p>大家都是知道uber是大量采用Node.js开发的公司，而2016年4月12日infoq发了一篇名为《Uber是如何基于Go语言构建高QPS服务的？》</p>
+
+<p>http://www.infoq.com/cn/articles/uber-build-high-qps-services</p>
+
+<p>很多人问我，是不是uber以后要用go去替代Node.js？</p>
+
+<p>我的回答是，目前看它只是地理查询的地方使用go重写了，这并不意味着，它完全会用go替代Node.js的，而且在绝大部分场景下Node.js是有它的优势的，除了文章讲的场景外，真的很少能找出差异特别大的点，各有优缺点，一个公司想弃用一项技术栈也是很难的一件事儿。</p>
+
+<h3>先看一下文章说的“选择Go的原因”</h3>
+
+<p>当我们评估所要使用语言的时候，Node.js正是广大的服务设计团队普遍采用的编程语言。而我们也在Node.js的使用方面有着丰富的经验。然而，Go语言却由于以下原因满足了我们的需求：</p>
+
+<ul>
+<li>高吞吐量和低延迟的需求。Uber的手机端App在发送请求时，必然会触发一次查找地理围栏的操作。而服务器必须要能够对每秒上万次的请求以99%的概率响应时间小于100ms的速度进行响应。</li>
+<li>CPU密集型负载。查找地理围栏需要使用计算密集型的Point-In-Polygon（PIP）算法。尽管Node.js可以很好的用于I/O密集型的服务，解释执行以及动态类型定义等的特性使得它并不适合于我们的使用场景。</li>
+<li>非中断式的后台加载。为了保证查询操作是基于最新的地理围栏信息而进行的，服务必须要能够根据多个数据源的信息在后台实时刷新内存中的地理围栏数据。因为Node.js是单线程的，后台刷新很可能会占用一定的CPU时间（如CPU密集型的JSON的编译工作），最终导致部分查询的响应时间过长。但是，对于Go语言而言，这完全不是问题。Goroutine可以运行在多个CPU核上，并且可以在响应前端查询的同时后台并行进行刷新数据的工作。</li>
+</ul>
+
+<p>这个理由解释是ok的，go确实在cpu密集应用上有它的优势，异步流程控制上比Node.js要强非常非常多，对于一些tcp长连接（im、游戏），多核计算类的都有非常好的性能优势。</p>
+
+<p>可是，亲，你的瓶颈出在哪里呢？真的是性能么？</p>
+
+<h3>黑一下go语言吧: 够(go)不着</h3>
+
+<p>go的缺点是很难够(go)着</p>
+
+<ul>
+<li>没有好的包管理，目前生态还不是特别好，选择的可能不多</li>
+<li>没有好的调试工具，tdd/bdd新手难掌握(vscode-go还凑合)</li>
+<li>语法问题，强c背景的人不多</li>
+</ul>
+
+<p>总结：适合高端人群，但对团队开发是有门槛的，不适用国内大部分大团队，当然如果你的团队足够牛逼，选go是非常好的选择。</p>
+
+<p>羊和骆驼的故事告诉我们：够得着你牛逼，够不着，累死你也够不着</p>
+
+<h3>架构的演进</h3>
+
+<p>架构的演进过程，一般如下</p>
+
+<ul>
+<li>无论如何，先实现(不择手段，或者说用自己擅长的)</li>
+<li>优化（一棵树上吊死）</li>
+<li>服务化（东拼西凑，捉襟见肘，趋于稳定）</li>
+<li>合适的技术做合适的事儿（有选择的挖坑优化）</li>
+</ul>
+
+<p>如果Uber的服务都非常成熟了，那么它是有能力完全用其他语言重写的，用go重写地理查询服务，是因为它已经演化到了第四阶段，有了之前的精力才有今天的可转变。</p>
+
+<p>其实，我对语言并没有什么偏见，按照目前技术发展速度来看，未来应该是一个<strong>技术多样性</strong>，<strong>语言性能趋于相同</strong>，<strong>大家只看喜好</strong>来决定选用那种语言的局面，而不是语言之争。</p>
+
+<p>其实最终还是要回归到架构的本质上去的，场景决定技术。</p>
+
+<p>在未来很长一段时间，Node.js都会是Uber的主要服务，即使替换也会一点一点的来，积累与成本是不可能短时间消失的。</p>
+
+<p>我们要问的是：“现在处于什么阶段？当前场景下使用Node.js是否合适？”，而不是看人家用go重写了。。。</p>
+
+<h3>合理选型</h3>
+
+<p>Node.js是单线程的，从上面的说明，我们可以知道Node.js对于io密集型应用开发是非常棒的，其他，如cpu-密集型的就不是那么适合。</p>
+
+<p>那时下最流行的直播来说，Node.js可以做直播么？</p>
+
+<p>肯定是可以的，但全是Node.js效率不会特别高，比较直播音频、视频、图片、编辑码，以及socket不是Node.js最强的点，像很多公司采用go去实现这部分是非常棒的。</p>
+
+<ul>
+<li>实时视频处理（推荐go）</li>
+<li>其他用Node.js做都非常合适，无论是聊天室，弹幕，还是各种rank，api等</li>
+</ul>
+
+<h1>现代的Node.js：构建微服务利器</h1>
+
+<ul>
+<li>小而美</li>
+<li>同步的Node.js</li>
+<li>善用npm，实现3化（模块化，最小化，服务化）</li>
+<li>使用docker compose作为本地开发环境</li>
+<li>微服务选型</li>
+</ul>
+
+<h2>哲学：小而美</h2>
+
+<p>使用Unix的方式：</p>
+
+<blockquote>
+<p>Developers should build a program out of simple parts connected by well defined interfaces, so problems are local, and parts of the program can be replaced in future versions to support new features.</p>
+</blockquote>
+
+<p>保持模块足够小（内聚），模块应该只做一件事！</p>
+
+<p>The Node philosophy is to build small composible parts that do one thing (the UNIX philosophy), and if that one thing can be done in &quot;userland&quot;, then it doesn&#39;t belong in core.</p>
+
+<p>&quot;Small is beautiful&quot;是Unix哲学9条里的第一条，但对Node.js来说，它实在是再合适不过了</p>
+
+<p>http://blog.izs.me/post/48281998870/unix-philosophy-and-nodejs</p>
+
+<!-- ![](images/nodejs-philosophy.png) -->
+
+<ul>
+<li>Write modules that do one thing well. Write a new module rather than complicate an old one.</li>
+<li>Write modules that encourage composition rather than extension.</li>
+<li>Write modules that handle data Streams, because that is the universal interface.</li>
+<li>Write modules that are agnostic about the source of their input or the destination of their output.</li>
+<li>Write modules that solve a problem you know, so you can learn about the ones you don’t.</li>
+<li>Write modules that are small. Iterate quickly. Refactor ruthlessly. Rewrite bravely.</li>
+<li>Write modules quickly, to meet your needs, with just a few tests for compliance. Avoid extensive specifications. Add a test for each bug you fix.</li>
+<li>Write modules for publication, even if you only use them privately. You will appreciate documentation in the future.</li>
+</ul>
+
+<p>以前吹牛那性能说事儿，现在那npm说事儿，也就是说npm目前是最好的包管理器，比其他语言都要好，它的模块数也非常多。</p>
+
+<p>可以这样说，Node.js世界里，一起都是模块，无论写点啥，都推荐你先<code>npm init</code>然后再写代码。</p>
+
+<p>这就有一个问题，模块的定义，是不是3行代码也可以是一个模块呢？</p>
+
+<p>知名Node.js程序员 <a href="https://github.com/sindresorhus/ama/issues/10">sindresorhus </a>说过</p>
+
+<blockquote>
+<p>Sometimes code is complex because it has to be. It might handle more edge cases which are found over time and makes the code more durable.</p>
+</blockquote>
+
+<p>对于模块使用问题，我觉得还是要谨慎一点，能自己做的尽量自己做，如非必须，尽量少用。</p>
+
+<h2>同步的Node.js</h2>
+
+<p>上面讲了generator和async函数可以让Node.js代码写的跟同步一样，推荐async + promise用法。</p>
+
+<h3>异常处理</h3>
+
+<p>Node.js里关于异常处理有一个约定，即同步代码采用try/catch，非同步代码采用error-first方式。对于async函数俩说，它的await语句是同步执行的，所以最正常的流程处理是采用try/catch语句捕获。</p>
+<div class="highlight"><pre><span class="vg">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">await</span><span class="w"> </span><span class="vg">asyncFn</span><span class="p">());</span>
+<span class="p">}</span><span class="w"> </span><span class="vg">catch</span><span class="w"> </span><span class="p">(</span><span class="vg">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">console</span><span class="o">.</span><span class="vg">error</span><span class="p">(</span><span class="vg">err</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>这是通用性的做法，很多时候，我们需要把异常做的更细致一些，这时只要把Promise的异常处理好就好了。</p>
+
+<ul>
+<li>then(onFulfilled, onRejected)里的onRejected</li>
+<li>catch</li>
+</ul>
+
+<h3>实践</h3>
+
+<ul>
+<li>promise更容易做promisefyAll</li>
+<li>async函数无法批量操作</li>
+</ul>
+
+<p>那么，在常见的web应用里，dao层使用promise比较好，而service层，使用async/await更好</p>
+
+<p>dao层使用promise</p>
+
+<ul>
+<li>crud</li>
+<li>单一模型的方法多</li>
+<li>库自身支持promise</li>
+</ul>
+
+<p>这种用promisefyAll基本几行代码就够了，一般单一模型的操作，不会特别复杂，应变的需求基本不大。</p>
+
+<p>而service层一般是多个model组合操作，多模型操作就可以拆分成多个小的操作，然后使用await来组合，看起来会更加清晰，另外对需求应变也是非常容易的。</p>
+
+<h3>总结</h3>
+
+<ul>
+<li>async函数语义上非常好</li>
+<li>async不需要执行器，它本身具备执行能力，不像generator</li>
+<li>async函数的异常处理采用try/catch和promise的错误处理，非常强大</li>
+<li>await接Promise，Promise自身就足够应对所有流程了</li>
+<li>await释放Promise的组合能力，外加Promise的then，基本无敌</li>
+</ul>
+
+<p>这就是我们要追赶的趋势。如果无意外10月份之前就会发布新的Node.js版本，会支持async函数哦。即使现在，用babel编译，也还是可以的。</p>
+
+<h2>善用npm，实现3化（模块化，最小化，服务化）</h2>
+
+<p>使用npm模块化</p>
+
+<ul>
+<li>使用npmjs的private私有模块（目前做法）</li>
+<li>使用npm的本地模块开发方法（测试和部署都非常快）</li>
+<li>搭建npm私服（todo）</li>
+</ul>
+
+<p>通过识别业务边界，能拆分服务的都拆分成服务，保证模块的粒度最小。</p>
+
+<p>比如</p>
+<div class="highlight"><pre><span class="vg">hz</span><span class="o">-</span><span class="vg">api</span><span class="o">-</span><span class="vg">admin</span>
+<span class="vg">hz</span><span class="o">-</span><span class="vg">api</span><span class="o">-</span><span class="vg">crm</span>
+<span class="vg">hz</span><span class="o">-</span><span class="vg">api</span><span class="o">-</span><span class="vg">order</span>
+<span class="vg">hz</span><span class="o">-</span><span class="vg">api</span><span class="o">-</span><span class="vg">statistics</span>
+<span class="vg">hz</span><span class="o">-</span><span class="vg">api</span><span class="o">-</span><span class="vg">stock</span>
+<span class="vg">hz</span><span class="o">-</span><span class="vg">dao</span><span class="o">-</span><span class="vg">cloud</span>
+<span class="vg">hz</span><span class="o">-</span><span class="vg">dao</span><span class="o">-</span><span class="vg">private</span>
+<span class="vg">hz</span><span class="o">-</span><span class="vg">dao</span><span class="o">-</span><span class="vg">usercenter</span>
+</pre></div>
+<h2>使用docker compose作为本地开发环境</h2>
+
+<p>Dockerfile</p>
+<div class="highlight"><pre><span class="n">app</span><span class="o">:</span>
+  <span class="n">build</span><span class="o">:</span> <span class="o">.</span>
+  <span class="n">volumes</span><span class="o">:</span>
+    <span class="o">-</span> <span class="o">.:/</span><span class="n">src</span>
+  <span class="n">links</span><span class="o">:</span>
+    <span class="o">-</span> <span class="n">mongo</span>
+    <span class="o">-</span> <span class="n">redis</span>
+    <span class="o">-</span> <span class="n">api_order</span>
+  <span class="n">ports</span><span class="o">:</span>
+    <span class="o">-</span> <span class="mi">3000</span><span class="o">:</span><span class="mi">3000</span>
+
+<span class="n">redis</span><span class="o">:</span>
+  <span class="n">image</span><span class="o">:</span> <span class="n">redis</span>
+
+<span class="n">mongo</span><span class="o">:</span>
+  <span class="n">image</span><span class="o">:</span> <span class="n">mongo</span>
+
+<span class="n">api_order</span><span class="o">:</span>
+  <span class="n">image</span><span class="o">:</span> <span class="n">api_order</span>
+</pre></div>
+<p>自己构建服务镜像，类似redis、mongodb这样的，组合镜像，可以快速构建开发环境。</p>
+
+<p>使用docker compose和Node.js结合是非常方便的，外加其他docker技术，可以让开发流程更顺畅。</p>
+
+<h2>微服务选型</h2>
+
+<p><img src="images/microservice.png" alt="Microservice"></p>
+
+<h3>HTTP API</h3>
+
+<p>采用<a href="https://github.com/koajs/koa/tree/v2.x">Koa.js 2.x</a>作为http api层框架，主要封装和组装rpc服务。</p>
+
+<p>Koa的优点</p>
+
+<ul>
+<li>简单，可定制性强</li>
+<li>高性能，即使同样不优化，性能也比较好</li>
+<li>“同步”流程控制，支持promise，generator，async函数</li>
+</ul>
+
+<p>当前做法</p>
+
+<ul>
+<li>目前使用generator和yield + promise来做异步流程控制</li>
+<li>等node原生支持async函数，全面切换到async + promise（预计10月份）</li>
+</ul>
+
+<h3>使用rpc拆分服务</h3>
+
+<p>比较好的做法是http api调用rpc，提供最终api</p>
+
+<ul>
+<li>单一调用，简单接口</li>
+<li>多个调用，可以封装成上层服务，也可以组合用</li>
+</ul>
+
+<p>rpc框架，如dubbo，dubbo-x，motan，grpc等，我们选的是grpc</p>
+
+<p>node.js还有senecajs.org专门做微服务的，唯一的缺点是多语言支持，其他都非常好。</p>
+
+<h3>rpc拆分后，拆分db</h3>
+
+<p>一般拆分rpc都会按照某些业务主体划分，所以数据库是可以拆分出去</p>
+
+<p>比如</p>
+
+<ul>
+<li>库存</li>
+<li>订单</li>
+<li>评论</li>
+<li>弹幕</li>
+</ul>
+
+<p>其实，只要保证用户一致，其他数据库保存各自的数据就好。在数据分析的时候，汇总到一起即可，无论etl还是stream都可以。</p>
+
+<p>服务和db拆分的好处是便于横向扩展，这样就可以做到动态伸缩，哪里有瓶颈治哪里，在架构调优上是有明显优势的。</p>
+
+<h3>服务多，就要服务治理、发现</h3>
+
+<p>采用consul作为服务发现软件(etcd也不错)</p>
+
+<h3>服务器监控apm</h3>
+
+<p>这是java写的https://github.com/naver/pinpoint</p>
+
+<h3>api多了，怎么办呢？</h3>
+
+<p>都是重复的，如日志、权限等，这时，我们需要api Gateway。</p>
+
+<p>https://getkong.org/</p>
+
+<p>通过nginx + lua实现，提供插件机制，非常好用。</p>
+
+<h3>自动化运维</h3>
+
+<ul>
+<li>saltstack</li>
+</ul>
+
+<h3>容器化</h3>
+
+<p>剩下的就是大家熟悉的docker了</p>
+
+<h3>总结</h3>
+
+<p>架构是相同的，其实语言是无所谓的。</p>
+
+<h1>联系我</h1>
+
+<p><img src="images/sang.jpg" alt="Sang"></p>
+
+			          	</article>
+			        </div>
+					</div>
+	      </body>
+	    </html>
+			<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+			<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+			<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+      <script type="text/javascript" src="toc/toc_conf.js"></script>
+      
+			<SCRIPT type="text/javascript" >
+			<!--
+			$(document).ready(function(){
+          var css_conf = eval(markdown_panel_style);
+          $('#readme').css(css_conf)
+          
+          var conf = eval(jquery_ztree_toc_opts);
+  				$('#tree').ztree_toc(conf);
+
+				
+			});
+			//-->
+			</SCRIPT>
+	  
