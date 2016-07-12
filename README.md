@@ -584,9 +584,58 @@ dao层使用promise
 
 ## 善用npm，实现3化（模块化，最小化，服务化）
 
+使用npm模块化
+
+- 使用npmjs的private私有模块（目前做法）
+- 使用npm的本地模块开发方法（测试和部署都非常快）
+- 搭建npm私服（todo）
+
+通过识别业务边界，能拆分服务的都拆分成服务，保证模块的粒度最小。
+
+比如
+
+```
+hz-api-admin
+hz-api-crm
+hz-api-order
+hz-api-statistics
+hz-api-stock
+hz-dao-cloud
+hz-dao-private
+hz-dao-usercenter
+```
 
 ## 使用docker compose作为本地开发环境
 
+
+Dockerfile
+
+```
+app:
+  build: .
+  volumes:
+    - .:/src
+  links:
+    - mongo
+    - redis
+    - api_order
+  ports:
+    - 3000:3000
+
+redis:
+  image: redis
+
+mongo:
+  image: mongo
+  
+api_order:
+  image: api_order
+```
+
+
+ 
+- 自己构建服务镜像，类似redis、mongodb这样的
+- 
 
 ## 微服务选型
 
