@@ -29,6 +29,17 @@ i5ting（江湖人称狼叔），空弦科技 CTO，StuQ 明星讲师，开源�
 - 接入层？
 - uber用go替代Node.js重写了地理位置服务？
 
+## 单线程，会死？
+
+## 异步（callbackhell）太恶心？
+
+## mongodb事务？
+
+## 接入层？
+
+## uber用go替代Node.js重写了地理位置服务？
+
+
 # 现代的Node.js：构建微服务利器
 
 - 小而美
