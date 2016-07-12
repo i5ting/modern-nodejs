@@ -1,0 +1,22 @@
+{
+  "name": "modern-nodejs",
+  "version": "1.0.0",
+  "description": "DockOne微信分享专用（2016-07-12）《微服务选型之Modern Node.js》",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i5ting/modern-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i5ting/modern-nodejs/issues"
+  },
+  "homepage": "https://github.com/i5ting/modern-nodejs#readme",
+  "dependencies": {
+    "koa": "^2.0.0"
+  }
+}
