@@ -21,7 +21,7 @@ i5ting（江湖人称狼叔），空弦科技 CTO，StuQ 明星讲师，开源�
 
 ![I5ting](images/i5ting.jpg)
 
-Mixu说的最经典的一句话：
+Mixu说的关于Node.js最经典的一句话：
 
 > Everything runs in parallel except your code!（在Node中）除了代码，一切都是并行的！
 
@@ -65,7 +65,7 @@ Apache是多线程的：它的一个请求产生一个线程（或者进程，�
 
 其实最大的改变是，强制开发写代码的时候要以异步模式来思考，全部异步才会让大家在异步往同步的路上做更多的思考，才有现在的更加丰富流程控制（下一小节会详细讲，可以同步哦）。
 
-### 会死？
+### 单线程会死？
 
 单线程非常脆弱，随便弄点什么异常都会挂掉。
 
@@ -120,7 +120,7 @@ Error: ENOENT: no such file or directory, open 'somefile.txt'
 
 > 你心里一定在骂：太浪费了。。。
 
-### 捕获uncaughtException
+### 其实，你可以捕获uncaughtException
 
 改进版本app2.js
 
@@ -149,9 +149,11 @@ process.on('uncaughtException', function (err) {
 app.listen(3000);
 ```
 
-使用`process.on('uncaughtException', function (err) {})`来处理，这样就不会crash了。可是很多应用都没有做这样的基本处理，不死才怪呢？
+使用`process.on('uncaughtException', function (err) {})`来处理，这样就不会crash了。
 
-### 捕获异常
+可是很多应用都没有做这样的基本处理，不死才怪呢？
+
+### 关于捕获异常
 
 app3.js
 
@@ -255,6 +257,8 @@ $ pm2 start app.js -i 0 --name "modern-nodejs"
 - 你的应用线上部署就只部署1台服务器么？这种几率其实也蛮小的，多台服务器也要做集群
 
 如果所有集群里的服务器都crash了呢？这是运维水平问题了，招个运维吧，和Node.js无关
+
+> 结论是Node.js不会因为单线程而和其他语言不一样，只是处理方式稍有不同而已，它有它自己的方式。
 
 ## 异步（callbackhell）太恶心？
 
@@ -719,3 +723,32 @@ https://getkong.org/
 # 联系我
 
 ![Sang](images/sang.jpg)
+
+
+
+## Q1: nodejs的相关资源在国内访问一直有问题，以前尝试通过代理绕过，但是npm、node-gyp这些的代理配置似乎都有所不同，请问你们是怎么解决的呢？有比较全面的资料可以分享吗？
+
+推荐采用3m安装法
+
+- nvm版本
+- nrm配置npm registory源
+- npm安装模块
+
+一般是nrm use cnpm就可以了
+
+
+
+## Q2：我想问你刚刚讲的是node做整个微服务的语言？还是node只是做业务系统，核心服务还是java这类的语言？
+
+答：node可以做整个后端，后端微服务会拆分为http api和rpc层，node在这二部分都可以，对于一些遗留的老项目，后端可能是java的rpc服务，这种情况，node做的就是接入层。
+
+如果项目是新项目，可以完全采用Node做整个服务的。
+
+
+## Q2： pm2 能像cluster 那样做多进程么 为什么我用pm2 启多个 但是 wrk压的 时候 只有一个node进程是工作的
+
+
+
+## Q3: 能分享下Node 运行时的内存调优经验吗？
+
+推荐使用朴大写的alinode，当然自己做v8-profile + chrome也可以，不过比较麻烦一些
