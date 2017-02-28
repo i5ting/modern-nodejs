@@ -722,9 +722,7 @@ https://getkong.org/
 
 # 联系我
 
-![Sang](images/sang.jpg)
-
-
+![Connect](images/connect.jpg)
 
 ## Q1
 
