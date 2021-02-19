@@ -722,7 +722,6 @@ https://getkong.org/
 
 # 联系我
 
-![Connect](images/connect.jpg)
 
 ## Q1
 
